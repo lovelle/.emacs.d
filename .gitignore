@@ -19,3 +19,7 @@ site-lisp/adventur-mode
 /history
 /ido.last
 /recentf
+eshell/
+tutorial/
+ac-comphist.dat
+.python-environments/

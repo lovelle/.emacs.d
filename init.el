@@ -12,7 +12,7 @@
 
 
 ;; No splash screen please ... jeez
-;(setq inhibit-startup-message t)
+(setq inhibit-startup-message t)
 
 ;; Set path to dependencies
 (setq site-lisp-dir
@@ -71,6 +71,8 @@
      visual-regexp
      markdown-mode
      fill-column-indicator
+     ; fish-mode
+     ; fish-completion
      ;auto complete
      auto-complete
      deferred
@@ -104,6 +106,7 @@
      go-errcheck
      go-autocomplete
      go-eldoc
+     neotree
      flx
      f
      flx-ido
@@ -178,7 +181,6 @@
 (--each '(restclient-mode-hook
           java-mode
           ruby-mode
-          go-mode
           markdown-mode
  ;         groovy-mode
           scala-mode)
@@ -187,7 +189,6 @@
 ;; Language specific setup files
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
 (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
-(eval-after-load 'go-mode '(require 'setup-go-mode))
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
 
 ;; Load stuff on demand

@@ -50,6 +50,9 @@
 ;; Git-gutter+
 (global-git-gutter+-mode)
 
+;; Enable electric pair
+(electric-pair-mode)
+
 ;; Enable helm-follow-mode by default
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

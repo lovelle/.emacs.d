@@ -61,6 +61,7 @@
 (defun init--install-packages ()
   (packages-install
    '(magit
+     git-gutter+
      wgrep
      edn
      inflections
@@ -115,6 +116,7 @@
      smartparens
      ido-vertical-mode
      ido-at-point
+     helm-ag
      guide-key
      restclient
      highlight-escape-sequences

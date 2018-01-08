@@ -7,18 +7,39 @@
 ; Full screen
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-; Go autocomplete
+; Go
+(require 'go-mode)
+(require 'go-snippets)
+(require 'govet)
+(require 'golint)
+(require 'go-errcheck)
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOPATH"))
+
+(require 'flycheck-gometalinter)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
+
+; Evil Vim emulation package
+(require 'evil)
+(global-set-key (kbd "C-*") 'evil-search-symbol-forward)
+(global-set-key (kbd "C-#") 'evil-search-symbol-backward)
 
 ; Python jedi autocomplete
 (autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 
-; Lua
+; Company
 (require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+; Lua
 (require 'company-lua)
 
 ; Neotree
@@ -50,8 +71,42 @@
 ;; Git-gutter+
 (global-git-gutter+-mode)
 
+(setq i-search-allow-scroll t)
+
+(eval-after-load 'git-gutter+
+  '(progn
+       ;;; Jump between hunks
+     (define-key git-gutter+-mode-map (kbd "C-x n") 'git-gutter+-next-hunk)
+     (define-key git-gutter+-mode-map (kbd "C-x p") 'git-gutter+-previous-hunk)
+
+       ;;; Act on hunks
+     (define-key git-gutter+-mode-map (kbd "C-x v =") 'git-gutter+-show-hunk)
+     (define-key git-gutter+-mode-map (kbd "C-x r") 'git-gutter+-revert-hunks)
+     ;; Stage hunk at point.
+     ;; If region is active, stage all hunk lines within the region.
+     (define-key git-gutter+-mode-map (kbd "C-x t") 'git-gutter+-stage-hunks)
+     (define-key git-gutter+-mode-map (kbd "C-x c") 'git-gutter+-commit)
+     (define-key git-gutter+-mode-map (kbd "C-x C") 'git-gutter+-stage-and-commit)
+     (define-key git-gutter+-mode-map (kbd "C-x C-y") 'git-gutter+-stage-and-commit-whole-buffer)
+     (define-key git-gutter+-mode-map (kbd "C-x U") 'git-gutter+-unstage-whole-buffer)))
+
 ;; Enable electric pair
 (electric-pair-mode)
+
+;; Add lin num
+;(linum-mode)
+
+;; Customization
+(global-set-key (kbd "C-w") 'backward-kill-word)
+
+;; C support
+;(require 'setup-helm)
+;(require 'setup-helm-gtags)
+
+;; To use company-mode with Clang, add this configuration
+;(setq company-backends (delete 'company-semantic company-backends))
+;(define-key c-mode-map  [(tab)] 'company-complete)
+;(define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;; Enable helm-follow-mode by default
 (custom-set-variables
@@ -61,12 +116,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "9527feeeec43970b1d725bdc04e97eb2b03b15be982ac50089ad223d3c6f2920" default)))
+    ("9527feeeec43970b1d725bdc04e97eb2b03b15be982ac50089ad223d3c6f2920" default)))
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
- '(package-hidden-regexps (quote ("\\`git-gutter")))
  '(package-selected-packages
    (quote
-    (yesql-ghosts whitespace-cleanup-mode wgrep visual-regexp string-edit smartparens ruby-tools ruby-additional rubocop restclient prodigy paredit neotree move-text markdown-mode magit luarocks jedi inflections ido-vertical-mode ido-at-point hydra htmlize highlight-escape-sequences helm-ag guide-key golint go-tag go-snippets go-impl go-gopath go-gen-test go-errcheck go-eldoc go-autocomplete go-add-tags go flycheck-pyflakes flycheck-pycheckers flycheck-pos-tip flx-ido fill-column-indicator exec-path-from-shell elisp-slime-nav edn dockerfile-mode dired-details company-lua beginend ample-zen-theme))))
+    (yesql-ghosts whitespace-cleanup-mode wgrep visual-regexp string-edit smartparens ruby-tools ruby-additional rubocop restclient prodigy paredit neotree move-text markdown-mode magit luarocks jedi inflections ido-vertical-mode ido-at-point hydra htmlize highlight-escape-sequences helm-ag guide-key golint go-tag go-snippets go-impl go-gopath go-gen-test go-errcheck go-eldoc go-autocomplete go-add-tags go git-gutter+ flycheck-pyflakes flycheck-pycheckers flycheck-pos-tip flx-ido fill-column-indicator exec-path-from-shell elisp-slime-nav edn dockerfile-mode dired-details company-lua chess beginend ample-zen-theme))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

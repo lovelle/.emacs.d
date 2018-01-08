@@ -63,6 +63,7 @@
    '(magit
      git-gutter+
      wgrep
+     chess
      edn
      inflections
      hydra
@@ -72,6 +73,7 @@
      visual-regexp
      markdown-mode
      fill-column-indicator
+     evil
      ; fish-mode
      ; fish-completion
      ;auto complete
@@ -80,23 +82,24 @@
      company
      flycheck
      flycheck-pos-tip
-     ; python
+     ;; Python
      jedi
      python-environment
      flycheck-pyflakes
      flycheck-pycheckers
-     ; lua
+     ;; Lua
      lua-mode
      luarocks
      company-lua
-     ; ruby
+     ;; Ruby
      ruby-mode
      ruby-tools
      ruby-additional
      rubocop
-     ; go
+     ;; Go
      go
      go-mode
+     govet
      golint
      go-tag
      go-impl
@@ -107,6 +110,7 @@
      go-errcheck
      go-autocomplete
      go-eldoc
+     flycheck-gometalinter
      neotree
      flx
      f
@@ -117,6 +121,10 @@
      ido-vertical-mode
      ido-at-point
      helm-ag
+     ; helm-gtags
+     ; jump
+     ; jumplist
+     ; helm-company
      guide-key
      restclient
      highlight-escape-sequences

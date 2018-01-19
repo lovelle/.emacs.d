@@ -97,7 +97,7 @@
 ;(linum-mode)
 
 ;; Customization
-(global-set-key (kbd "C-w") 'backward-kill-word)
+;(global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;; C support
 ;(require 'setup-helm)
@@ -117,10 +117,7 @@
  '(custom-safe-themes
    (quote
     ("9527feeeec43970b1d725bdc04e97eb2b03b15be982ac50089ad223d3c6f2920" default)))
- '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
- '(package-selected-packages
-   (quote
-    (yesql-ghosts whitespace-cleanup-mode wgrep visual-regexp string-edit smartparens ruby-tools ruby-additional rubocop restclient prodigy paredit neotree move-text markdown-mode magit luarocks jedi inflections ido-vertical-mode ido-at-point hydra htmlize highlight-escape-sequences helm-ag guide-key golint go-tag go-snippets go-impl go-gopath go-gen-test go-errcheck go-eldoc go-autocomplete go-add-tags go git-gutter+ flycheck-pyflakes flycheck-pycheckers flycheck-pos-tip flx-ido fill-column-indicator exec-path-from-shell elisp-slime-nav edn dockerfile-mode dired-details company-lua chess beginend ample-zen-theme))))
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

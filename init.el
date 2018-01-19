@@ -102,6 +102,7 @@
      govet
      golint
      go-tag
+     go-guru
      go-impl
      go-gopath
      go-add-tags
@@ -109,7 +110,10 @@
      go-snippets
      go-errcheck
      go-autocomplete
+     go-playground
+     go-scratch
      go-eldoc
+     godoctor
      flycheck-gometalinter
      neotree
      flx

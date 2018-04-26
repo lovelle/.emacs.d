@@ -28,6 +28,12 @@
 ;; Set up appearance early
 (require 'appearance)
 
+;; Save settings
+(desktop-save-mode 1)
+(savehist-mode 1)
+(setq desktop-auto-save-timeout 30)
+(add-to-list 'savehist-additional-variables 'kill-ring)
+
 ;; Settings for currently logged in user
 ;(setq user-settings-dir
 ;      (concat user-emacs-directory "users/" user-login-name))

@@ -117,7 +117,8 @@
  '(custom-safe-themes
    (quote
     ("9527feeeec43970b1d725bdc04e97eb2b03b15be982ac50089ad223d3c6f2920" default)))
- '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages)))
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(tool-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

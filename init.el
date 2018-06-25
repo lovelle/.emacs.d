@@ -11,6 +11,9 @@
      (list start end)))
 
 
+;; Treat all themes as safe
+(setq custom-safe-themes t)
+
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
 

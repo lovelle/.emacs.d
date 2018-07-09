@@ -1,4 +1,4 @@
-; Custom theme
+;; Custom theme
 (load-theme 'ample-zen t)
 
 ; Enable Flycheck
@@ -12,6 +12,8 @@
 (require 'go-snippets)
 (require 'govet)
 (require 'golint)
+;(require 'go-dlv)
+;(require 'go-debug)
 (require 'go-errcheck)
 (require 'go-autocomplete)
 (require 'auto-complete-config)
@@ -27,8 +29,10 @@
 
 ; Evil Vim emulation package
 (require 'evil)
+;(evil-mode 1)
+
 (global-set-key (kbd "C-*") 'evil-search-symbol-forward)
-(global-set-key (kbd "C-#") 'evil-search-symbol-backward)
+(global-set-key (kbd "C-ç") 'evil-search-symbol-backward)
 
 ; Python jedi autocomplete
 (autoload 'jedi:setup "jedi" nil t)
@@ -36,11 +40,36 @@
 (setq jedi:complete-on-dot t)
 
 ; Company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+;(require 'company)
+;(add-hook 'after-init-hook 'global-company-mode)
+
+;; Tabber
+(require 'tabbar)
+(tabbar-mode t)
+
+; Windows style
+(dolist (func '(tabbar-mode tabbar-forward-tab tabbar-forward-group tabbar-backward-tab tabbar-backward-group))
+  (autoload func "tabbar" "Tabs at the top of buffers and easy control-tab navigation"))
+
+(defmacro defun-prefix-alt (name on-no-prefix on-prefix &optional do-always)
+  `(defun ,name (arg)
+     (interactive "P")
+     ,do-always
+     (if (equal nil arg)
+         ,on-no-prefix
+       ,on-prefix)))
+
+(defun-prefix-alt shk-tabbar-next (tabbar-forward-tab) (tabbar-forward-group) (tabbar-mode 1))
+(defun-prefix-alt shk-tabbar-prev (tabbar-backward-tab) (tabbar-backward-group) (tabbar-mode 1))
+
+;(global-set-key [(control tab)] 'shk-tabbar-next)
+;(global-set-key [(control shift tab)] 'shk-tabbar-prev)
+(global-set-key (kbd "M-º") 'shk-tabbar-next)
+;(global-set-key [C-tab] 'shk-tabbar-prev)
+;(global-set-key [("C-iso-lefttab")] 'shk-tabbar-prev)
 
 ; Lua
-(require 'company-lua)
+;(require 'company-lua)
 
 ; Neotree
 (require 'neotree)
@@ -58,6 +87,18 @@
 ;            (neotree-find file-name))
 ;        (message "Could not find git project root."))))
 ;(global-set-key (kbd "C-c p") 'neotree-project-dir)
+
+;; Linetools
+;(require 'powerline)
+;(powerline-default-theme)
+
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(spaceline-info-mode)
+(spaceline-helm-mode)
+
+;; Autocomplete
+(global-set-key (kbd "C-c -") 'auto-complete)
 
 ;; Indent new lines
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -118,7 +159,8 @@
    (quote
     ("9527feeeec43970b1d725bdc04e97eb2b03b15be982ac50089ad223d3c6f2920" default)))
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(menu-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

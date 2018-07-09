@@ -88,7 +88,7 @@
      ;auto complete
      auto-complete
      deferred
-     company
+     ;company
      flycheck
      flycheck-pos-tip
      ;; Python
@@ -99,7 +99,7 @@
      ;; Lua
      lua-mode
      luarocks
-     company-lua
+     ;company-lua
      ;; Ruby
      ruby-mode
      ruby-tools
@@ -122,9 +122,26 @@
      go-playground
      go-scratch
      go-eldoc
+     ;go-dlv
+     ;go-debug
      godoctor
      flycheck-gometalinter
+     ;; Neotree
      neotree
+     ;; Linetools
+     ;powerline
+     spaceline
+     ;; Helm
+     helm-ag
+     ; helm-flyspell
+     ; helm-flycheck
+     ; helm-gtags
+     ; helm-company
+     ;; Evil
+     ;evil
+     ;evil-magit
+     ;; Extra
+     ; jump
      flx
      f
      flx-ido
@@ -132,11 +149,6 @@
      smartparens
      ido-vertical-mode
      ido-at-point
-     helm-ag
-     ; helm-gtags
-     ; jump
-     ; jumplist
-     ; helm-company
      guide-key
      restclient
      highlight-escape-sequences
